@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abd Raaz Digital — AI SEO for Home Service Businesses</title>
+<meta name="description" content="Abd Raaz Digital — AI SEO, high-converting web design, PPC and Reddit brand mentions exclusively for home service businesses. 10X your leads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff; --bg2:#faf7f2; --card:#ffffff; --card2:#fff9f3;
+    --line:rgba(232,98,12,.16); --text:#1b1b1b; --muted:#66707e;
+    --accent:#e8620c; --accent-d:#c24e05; --green:#16a34a;
+    --grad:linear-gradient(120deg,#e8620c,#ff9a3c);
+    --radius:22px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{overflow-x:clip}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65}
+  h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.2;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:88px 0;position:relative;z-index:1;scroll-margin-top:72px}
+  header.hero{scroll-margin-top:72px}
+  /* ambient */
+  .ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.35;animation:drift 18s ease-in-out infinite alternate}
+  .orb.a{width:480px;height:480px;background:#ffe3c7;top:-140px;left:-120px}
+  .orb.b{width:420px;height:420px;background:#ffd9b8;top:38%;right:-140px;animation-delay:-6s}
+  .orb.c{width:380px;height:380px;background:#ffe9d2;bottom:-120px;left:32%;animation-delay:-12s}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,40px) scale(1.12)}}
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:rgba(255,255,255,.82);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-family:'Sora',sans-serif;font-weight:800;font-size:18px;display:flex;align-items:center;gap:10px}
+  .brand img{height:34px;width:auto;display:block}
+  .brand .mark{width:34px;height:34px;border-radius:11px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:800;box-shadow:0 6px 18px rgba(232,98,12,.35)}
+  .nav-links{display:flex;gap:4px;flex-wrap:wrap}
+  .nav-links a{font-size:14px;font-weight:600;color:var(--muted);padding:8px 12px;border-radius:10px;transition:.25s}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent-d);background:rgba(232,98,12,.08)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;
+    padding:14px 26px;border-radius:14px;border:1px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s;white-space:nowrap;position:relative;overflow:hidden}
+  .btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 30px rgba(232,98,12,.38)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 44px rgba(232,98,12,.5)}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--text);box-shadow:0 4px 16px rgba(27,27,27,.06)}
+  .btn-ghost:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 10px 26px rgba(232,98,12,.16)}
+  .btn-sm{padding:10px 18px;font-size:14px;border-radius:12px}
+  .btn::after{content:'';position:absolute;top:0;left:-80%;width:45%;height:100%;transform:skewX(-20deg);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transition:left .55s ease;pointer-events:none}
+  .btn:hover::after{left:135%}
+  /* send button states */
+  #sendBtn.is-pressed{transform:translateY(2px) scale(.98);box-shadow:inset 0 3px 10px rgba(0,0,0,.22),0 2px 8px rgba(232,98,12,.2)}
+  #sendBtn.is-success{background:linear-gradient(120deg,#16a34a,#34d399);box-shadow:0 8px 30px rgba(22,163,74,.4);transform:none}
+  /* success popup */
+  .sent-pop{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    background:rgba(27,27,27,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .sent-pop.show{opacity:1;pointer-events:auto}
+  .sent-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:38px 42px;text-align:center;
+    max-width:350px;width:calc(100% - 48px);box-shadow:0 30px 80px rgba(27,27,27,.22);
+    transform:scale(.85) translateY(14px);transition:transform .38s cubic-bezier(.2,1.35,.4,1)}
+  .sent-pop.show .sent-card{transform:none}
+  .sent-check{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:30px;font-weight:800;color:#fff;background:linear-gradient(135deg,#16a34a,#34d399);
+    box-shadow:0 10px 30px rgba(22,163,74,.4)}
+  .sent-card h3{margin:0 0 8px;font-size:23px}
+  .sent-card p{margin:0 0 24px;color:var(--muted);font-size:15px}
+  /* hero */
+  .hero{padding:96px 0 72px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:18px}
+  .eyebrow::before{content:'';width:34px;height:2px;background:var(--grad);border-radius:2px;animation:barGrow 3s ease-in-out infinite}
+  @keyframes barGrow{0%,100%{width:34px}50%{width:56px}}
+  .hero h1{font-size:clamp(38px,5.6vw,62px);font-weight:800;margin-bottom:18px;letter-spacing:-.03em}
+  .hero h1 .hl{background:linear-gradient(120deg,#e8620c,#ff9a3c,#e8620c);background-size:220% auto;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+  @keyframes shine{to{background-position:220% center}}
+  /* premium: hero line-mask entrance */
+  .hero h1 .mask{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.09em}
+  .hero h1 .mline{display:block;transform:translateY(112%);animation:lineUp 1.05s cubic-bezier(.16,.8,.26,1) both}
+  @keyframes lineUp{to{transform:translateY(0)}}
+  nav.scrolled{box-shadow:0 12px 34px rgba(27,27,27,.1)}
+  .hero p.sub{color:var(--muted);font-size:clamp(16px,2vw,19px);max-width:560px;margin-bottom:32px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .photo-frame{position:relative;width:min(340px,80vw);margin:0 auto;aspect-ratio:3/4;border-radius:30px;padding:7px;background:var(--grad);
+    box-shadow:0 30px 70px rgba(232,98,12,.3);animation:photoIn 1.1s cubic-bezier(.18,.8,.3,1.15) .15s both}
+  @keyframes photoIn{from{opacity:0;transform:scale(.55)}60%{opacity:1;transform:scale(1.05)}to{opacity:1;transform:scale(1)}}
+  .photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:24px;display:block;background:#f3ede6}
+  .photo-frame::before{content:'';position:absolute;inset:-7px;border-radius:36px;pointer-events:none;
+    background:conic-gradient(from 0deg,transparent 0deg,transparent 300deg,rgba(255,255,255,.9) 330deg,rgba(255,154,60,.9) 352deg,transparent 360deg);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;padding:4px;animation:spinLight 3s linear infinite}
+  @keyframes spinLight{to{transform:rotate(360deg)}}
+  /* ticker */
+  .ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);position:relative;z-index:1}
+  .ticker-track{display:flex;width:max-content;animation:tick 28s linear infinite;padding:15px 0}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .ticker span{font-family:'Sora',sans-serif;font-weight:700;font-size:13px;letter-spacing:.2em;color:var(--muted);padding:0 26px;white-space:nowrap}
+  .ticker span b{color:var(--accent);font-weight:700;margin-right:26px}
+  @keyframes tick{to{transform:translateX(-50%)}}
+  /* sections */
+  h2.sec{font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+  h2.sec .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  p.lead{color:var(--muted);font-size:17px;max-width:680px}
+  .sec-head{margin-bottom:8px}
+  /* service cards */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;position:relative;overflow:hidden;
+    box-shadow:0 10px 34px rgba(27,27,27,.06);transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .card:hover{transform:translateY(-5px);border-color:rgba(232,98,12,.45);box-shadow:0 22px 55px rgba(232,98,12,.14)}
+  .card .icon{width:60px;height:60px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:26px;margin-bottom:20px;box-shadow:0 10px 26px rgba(232,98,12,.35)}
+  .card h3{font-size:21px;margin-bottom:6px}
+  .card .tagline{font-weight:700;font-size:15px;color:var(--accent-d);margin-bottom:10px}
+  .card p.desc{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .card .go{font-weight:700;font-size:14px;color:var(--accent)}
+  /* about */
+  .about-grid{display:grid;grid-template-columns:380px 1fr;gap:52px;align-items:center;margin-top:38px}
+  .quote-card{background:linear-gradient(160deg,#fff8f1,#ffefe0);border:1px solid var(--line);border-radius:24px;
+    padding:46px 38px;box-shadow:0 20px 55px rgba(232,98,12,.12)}
+  .qmark{font-size:76px;line-height:.6;color:var(--accent);font-family:Georgia,'Times New Roman',serif;margin-bottom:22px}
+  .quote-card p{font-size:22px;font-style:italic;line-height:1.6;margin-bottom:20px;font-weight:600}
+  .quote-card span{font-weight:700;font-size:15px;color:var(--accent-d)}
+  .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .pills span{font-size:13px;font-weight:600;border:1px solid var(--line);padding:10px 20px;border-radius:999px;background:#fff;color:var(--text);
+    transition:.25s;cursor:default;box-shadow:0 4px 12px rgba(27,27,27,.04)}
+  .pills span:hover{border-color:var(--accent);box-shadow:0 0 16px rgba(232,98,12,.25);transform:translateY(-2px)}
+  /* reviews */
+  /* reviews marquee: infinite loop of client messages */
+  .rmarq{overflow:hidden;margin-top:38px;position:relative;cursor:grab;touch-action:pan-y;
+    -webkit-user-select:none;user-select:none;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+  .rmarq.grabbing{cursor:grabbing}
+  .rmarq-track{display:flex;gap:22px;width:max-content;animation:tick 45s linear infinite;padding:12px 4px 20px;will-change:transform}
+  .rmarq:hover .rmarq-track{animation-play-state:paused}
+  .rmarq .rcard{width:350px;flex-shrink:0}
+  /* booking embed */
+  .book-card{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;
+    box-shadow:0 24px 70px rgba(232,98,12,.12);margin-top:38px}
+  #bookFrame{width:100%;height:720px;border:0;display:block}
+  @media(max-width:640px){#bookFrame{height:660px}}
+  /* partners strip */
+  .pgrid{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap;margin-top:30px}
+  .pgrid img{height:44px;width:auto;max-width:200px;object-fit:contain;opacity:.85;transition:opacity .3s}
+  .pgrid img:hover{opacity:1}
+  .rcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+    box-shadow:0 10px 34px rgba(27,27,27,.06);transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .rcard:hover{transform:translateY(-5px);border-color:rgba(232,98,12,.45);box-shadow:0 22px 55px rgba(232,98,12,.14)}
+  .rhead{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .rava{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid rgba(232,98,12,.25);background:#f3ede6}
+  .rhead b{display:block;font-size:15px}
+  .stars{color:var(--accent);font-size:14px;letter-spacing:2px}
+  .rcard p{color:var(--muted);font-size:14.5px;font-style:italic}
+  /* contact cards (approved demo style) */
+  .dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:38px}
+  .dcard{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px 24px;text-align:center;
+    box-shadow:0 14px 40px rgba(232,98,12,.09);transition:transform .3s,box-shadow .3s,border-color .3s;cursor:pointer;-webkit-tap-highlight-color:transparent;display:block}
+  .dcard:hover{transform:translateY(-5px);border-color:rgba(232,98,12,.5);box-shadow:0 24px 60px rgba(232,98,12,.18)}
+  .dico{width:66px;height:66px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:28px;margin:0 auto 18px;box-shadow:0 12px 30px rgba(232,98,12,.4)}
+  .dico svg{width:30px;height:30px;fill:#fff}
+  .dcard b{display:block;font-size:17px;margin-bottom:6px}
+  .dcard small{color:var(--muted);font-size:14px;word-break:break-all}
+  /* form */
+  form.contact{margin-top:36px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;gap:18px;
+    box-shadow:0 20px 60px rgba(27,27,27,.08);max-width:720px;margin-left:auto;margin-right:auto}
+  form.contact h3{font-size:23px;text-align:center}
+  .field{display:grid;gap:8px;min-width:0}
+  .field label{font-size:14px;font-weight:600;color:var(--muted)}
+  .field input,.field textarea{background:#fff;border:1px solid #e3ddd4;border-radius:12px;color:var(--text);
+    padding:14px 16px;font-size:15px;font-family:inherit;width:100%;transition:border-color .25s,box-shadow .25s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,98,12,.15)}
+  .field textarea{min-height:130px;resize:vertical}
+  .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+  .form-note{font-size:14px;min-height:22px;text-align:center}
+  .form-note.ok{color:var(--green)}
+  .form-note.err{color:#dc2626}
+  .form-note a{font-weight:700}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:44px 0;position:relative;z-index:1;background:var(--bg2)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .foot small{color:var(--muted);font-size:13px}
+  .fsoc{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted);
+    border:1px solid var(--line);background:#fff;padding:10px 18px;border-radius:999px;transition:.25s}
+  .fsoc:hover{color:var(--accent-d);border-color:rgba(232,98,12,.5);transform:translateY(-2px)}
+  /* click-pop */
+  @keyframes cardPop{0%{transform:scale(1)}30%{transform:scale(.95)}55%{transform:scale(1.035)}75%{transform:scale(.99)}100%{transform:scale(1)}}
+  .card.popping,.rcard.popping,.dcard.popping{animation:cardPop .5s cubic-bezier(.36,.07,.19,.97);
+    box-shadow:0 0 0 3px rgba(232,98,12,.5),0 0 46px rgba(232,98,12,.35)!important}
+  .fly-clone{position:fixed;z-index:9999;pointer-events:none;margin:0;animation:butterflyFly 1.25s ease-out forwards}
+  @keyframes butterflyFly{
+    0%{transform:translate(0,0) rotate(0deg) scaleX(1);opacity:1}
+    18%{transform:translate(-16px,-30px) rotate(-14deg) scaleX(.5);opacity:1}
+    38%{transform:translate(14px,-58px) rotate(11deg) scaleX(1);opacity:1}
+    58%{transform:translate(-12px,-86px) rotate(-9deg) scaleX(.5);opacity:.92}
+    78%{transform:translate(9px,-112px) rotate(7deg) scaleX(1);opacity:.55}
+    100%{transform:translate(0,-138px) rotate(0deg) scaleX(.55);opacity:0}
+  }
+  /* reveal */
+  .rv{opacity:0;transform:translateY(36px) scale(.985);transition:opacity .8s ease,transform .85s cubic-bezier(.16,.8,.26,1)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .rv{opacity:1;transform:none}
+    .hero h1 .mline{transform:none}
+    html{scroll-behavior:auto}
+  }
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:44px}
+    .hero{text-align:center}
+    .hero p.sub{margin-left:auto;margin-right:auto}
+    .hero-ctas{justify-content:center}
+    .about-grid{grid-template-columns:1fr}
+    .grid3{grid-template-columns:1fr}
+    .rmarq .rcard{width:320px}
+    .dgrid{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .rmarq .rcard{width:290px}
+    .pgrid{gap:28px}
+    .pgrid img{height:34px;max-width:150px}
+    .frow{grid-template-columns:1fr 1fr;gap:10px}
+    .field input,.field textarea{padding:12px;font-size:16px}
+    .field label{font-size:12.5px}
+  }
+  .menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;
+    flex-direction:column;align-items:center;justify-content:center;gap:5px;flex-shrink:0}
+  .menu-btn span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+  .menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-btn.open span:nth-child(2){opacity:0}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none}
+  @media(max-width:760px){
+    section{padding:64px 0}
+    .nav-links{display:none}
+    .menu-btn{display:flex}
+    .mobile-menu{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);
+      box-shadow:0 24px 44px rgba(27,27,27,.1);padding:8px 24px 16px;display:none;flex-direction:column;z-index:49}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:14px 4px;font-weight:600;color:var(--text);border-bottom:1px solid #f3ede4;font-size:16px}
+    .mobile-menu a:last-child{border-bottom:0}
+    form.contact{padding:24px}
+  }
+</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top" data-cta="nav-brand"><img src="img/logo.png" alt="Abd Raaz"></a>
+    <div class="nav-links">
+      <a href="#services" data-cta="nav-link-services">Services</a>
+      <a href="#about" data-cta="nav-link-about">About</a>
+      <a href="#reviews" data-cta="nav-link-reviews">Reviews</a>
+      <a href="#contact" data-cta="nav-link-contact">Contact</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="btn btn-primary btn-sm" id="navBook" href="#booking" data-cta="nav-booking">Let's Talk</a>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" data-cta="mnav-link-services">Services</a>
+    <a href="#about" data-cta="mnav-link-about">About</a>
+    <a href="#reviews" data-cta="mnav-link-reviews">Reviews</a>
+    <a href="#contact" data-cta="mnav-link-contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow rv">AI SEO for Home Service Businesses</span>
+      <h1><span class="mask"><span class="mline" style="animation-delay:.1s">10X Your Leads for Your</span></span><span class="mask"><span class="mline hl" style="animation-delay:.26s">Home Service Business.</span></span></h1>
+      <p class="sub rv d2">Dominate Google &amp; AI local search and get more home service calls.</p>
+      <div class="hero-ctas rv d2">
+        <a class="btn btn-primary" id="heroBook" href="#booking" data-cta="hero-booking">📅 Book a Call</a>
+        <a class="btn btn-ghost" href="#services" data-cta="hero-services">See Services ↓</a>
+      </div>
+    </div>
+    <div class="photo-frame rv d1"><img src="img/abd-raaz.jpg" alt="Abd Raaz"></div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span><b>✦</b>AI SEO</span><span><b>✦</b>GOOGLE MAPS</span><span><b>✦</b>CHATGPT READY</span><span><b>✦</b>REDDIT MENTIONS</span><span><b>✦</b>PPC</span><span><b>✦</b>WEB DESIGN</span><span><b>✦</b>HOME SERVICES</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Services</span>
+      <h2 class="sec rv">Built to win <span class="hl">local search.</span></h2>
+      <p class="lead rv">One niche, three weapons. Everything we do is engineered to turn nearby searches into booked jobs.</p>
+    </div>
+    <div class="grid3">
+      <div class="card rv">
+        <div class="icon">🔍</div>
+        <h3>AI SEO</h3>
+        <p class="tagline">Dominate AI Search &amp; Google Maps</p>
+        <p class="desc">We optimize your business to be the top recommendation on ChatGPT, Perplexity, and Google Maps. Attract high-intent local customers without spending a dollar on ads.</p>
+        <a class="go" id="svcSeo" href="#" target="_blank" rel="noopener" data-cta="service-ai-seo-whatsapp">Get AI SEO →</a>
+      </div>
+      <div class="card rv d1">
+        <div class="icon">🧩</div>
+        <h3>Customized</h3>
+        <p class="tagline">The Full-Stack Growth Solution</p>
+        <p class="desc">A bespoke package tailored to your business needs, including deep technical audits, high-converting website design, and managed PPC campaigns. We handle the tech; you handle the jobs.</p>
+        <a class="go" id="svcCustom" href="#" target="_blank" rel="noopener" data-cta="service-customized-whatsapp">Get a custom plan →</a>
+      </div>
+      <div class="card rv d2">
+        <div class="icon">📣</div>
+        <h3>Brand Mention</h3>
+        <p class="tagline">Build Unmatched Authority</p>
+        <p class="desc">We place your brand into authentic, high-traffic Reddit conversations where your customers are already asking for recommendations. Drive word-of-mouth traffic that builds instant trust and SEO power.</p>
+        <a class="go" id="svcBrand" href="#" target="_blank" rel="noopener" data-cta="service-brand-whatsapp">Build authority →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background:var(--bg2)">
+  <div class="wrap">
+    <span class="eyebrow rv">About</span>
+    <div class="about-grid">
+      <div class="quote-card rv">
+        <div class="qmark">&ldquo;</div>
+        <p>Making home service businesses impossible to ignore.</p>
+        <span>— Abd Raaz</span>
+      </div>
+      <div class="rv d1">
+        <h2 class="sec">Hey, I'm <span class="hl">Abd Raaz.</span></h2>
+        <p class="lead">While others spread themselves thin trying to do everything for everyone, I doubled down on a single mission: making home service businesses impossible to ignore.</p>
+        <br>
+        <p class="lead">AI is changing how customers find services — "basic SEO" isn't enough anymore. You need to dominate the places your customers actually look, whether that's a Google Maps search on a phone or a recommendation inside ChatGPT.</p>
+        <div class="pills">
+          <span>🤖 AI SEO</span><span>🗺️ Google Maps</span><span>💬 Reddit Mentions</span><span>🎯 PPC</span><span>🌐 Web Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span class="eyebrow rv">Book a call</span>
+      <h2 class="sec rv">Let's talk about <span class="hl">your growth.</span></h2>
+      <p class="lead rv" style="margin:0 auto">Pick a time that suits you — we'll map out your next wins together.</p>
+    </div>
+    <div class="book-card">
+      <iframe id="bookFrame" title="Book a discovery call" loading="lazy"></iframe>
+      <div id="bookFallback" style="display:none;text-align:center;padding:70px 24px">
+        <div class="dico" style="margin-bottom:18px">📅</div>
+        <b style="display:block;font-size:19px;margin-bottom:10px">Book a free discovery call</b>
+        <p style="color:var(--muted);margin-bottom:22px">The calendar couldn't load here — open it directly:</p>
+        <a class="btn btn-primary" id="bookFallbackBtn" href="#" target="_blank" rel="noopener" data-cta="booking-fallback">Open booking page ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Reviews</span>
+      <h2 class="sec rv">Clients <span class="hl">love the work.</span></h2>
+      <p class="lead rv">Real feedback from real business owners — five stars across the board.</p>
+    </div>
+    <div class="rmarq">
+    <div class="rmarq-track" id="revTrack">
+      <div class="rcard">
+        <div class="rhead"><img class="rava" src="img/t-stephanie.png" alt="Stephanie Solheim"><div><b>Stephanie Solheim</b><span class="stars">★★★★★</span></div></div>
+        <p>"I highly recommend them! Thorough work in a timely manner, great attention to detail — a pleasure to work with. Five stars!"</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead"><img class="rava" src="img/t-rob.jpg" alt="Rob Jones"><div><b>Rob Jones</b><span class="stars">★★★★★</span></div></div>
+        <p>"I wholeheartedly endorse him as an outstanding SEO professional whose expertise shines."</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead"><img class="rava" src="img/t-david.png" alt="David Holgate"><div><b>David Holgate</b><span class="stars">★★★★★</span></div></div>
+        <p>"Outstanding work — GMB posts, citations, branding, niche and geo silos. Great value for money."</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead"><img class="rava" src="img/t-joey.png" alt="Joey Beyer"><div><b>Joey Beyer</b><span class="stars">★★★★★</span></div></div>
+        <p>"Professional work, fast delivery, everything as promised. For this price, it's a steal."</p>
+      </div>
+      <div class="rcard">
+        <div class="rhead"><img class="rava" src="img/t-anthony.png" alt="Anthony Brooks"><div><b>Anthony Brooks</b><span class="stars">★★★★★</span></div></div>
+        <p>"Awesome service! I highly recommend this service!"</p>
+      </div>
+      <div class="rcard" style="display:flex;align-items:center;justify-content:center;text-align:center">
+        <div><div class="stars" style="font-size:22px;margin-bottom:10px">★★★★★</div><h3 style="font-size:20px;margin-bottom:8px">Your business<br>could be next.</h3><a class="go revWa" href="#" target="_blank" rel="noopener" data-cta="reviews-whatsapp" style="color:var(--accent);font-weight:700">Start the conversation →</a></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <h2 class="sec rv">Contact <span class="hl">Us.</span></h2>
+      <p class="lead rv" style="margin:0 auto">Pick whatever's easiest — we reply fast.</p>
+    </div>
+    <div class="dgrid">
+      <a class="dcard rv" id="ctWa" href="#" target="_blank" rel="noopener" data-cta="contact-whatsapp">
+        <div class="dico">💬</div><b>WhatsApp</b><small>+8801786457461</small>
+      </a>
+      <a class="dcard rv d1" id="ctFb" href="#" target="_blank" rel="noopener" data-cta="contact-fb">
+        <div class="dico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></div><b>Facebook</b><small>@abdraazfb</small>
+      </a>
+      <a class="dcard rv d2" id="ctEmail" href="#" data-cta="contact-email">
+        <div class="dico">✉️</div><b>E-mail</b><small>abd@abdraazdigital.com</small>
+      </a>
+      <a class="dcard rv d3" id="ctCommunity" href="#" target="_blank" rel="noopener" data-cta="contact-community">
+        <div class="dico">👥</div><b>Community</b><small>Join 11K+ members</small>
+      </a>
+    </div>
+    <form class="contact rv" id="contactForm" novalidate>
+      <h3>Send a Message</h3>
+      <div class="frow">
+        <div class="field">
+          <label for="fName">Your name</label>
+          <input id="fName" name="name" type="text" placeholder="Jane Cooper" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="fContact">Email address</label>
+          <input id="fContact" name="contact" type="email" placeholder="you@gmail.com" required autocomplete="email">
+        </div>
+      </div>
+      <div class="field">
+        <label for="fMsg">Your message</label>
+        <textarea id="fMsg" name="message" placeholder="Tell us about your business…" required></textarea>
+      </div>
+      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-primary" type="submit" id="sendBtn" data-cta="form-submit">Send Message →</button>
+      <p class="form-note" id="formNote" role="status"></p>
+    </form>
+  </div>
+</section>
+
+
+
+<section id="partners" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow rv">In good company</span>
+    <div class="pgrid rv">
+      <img src="img/p-meerkat.svg" alt="Grow with Meerkat" loading="lazy">
+      <img src="img/p-whitelabel.webp" alt="White Label SEO Firm" loading="lazy">
+      <img src="img/p-dmn8.webp" alt="DMN8 Partners" loading="lazy">
+      <img src="img/p-pravda.png" alt="PravdaSEO" loading="lazy" style="filter:brightness(0)">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top" data-cta="footer-brand"><img src="img/logo.png" alt="Abd Raaz"></a>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="fsoc" id="ftFb" href="#" target="_blank" rel="noopener" data-cta="footer-fb">Facebook</a>
+      <a class="fsoc" id="ftWa" href="#" target="_blank" rel="noopener" data-cta="footer-whatsapp">WhatsApp</a>
+    </div>
+    <small>© <span id="year"></span> Abd Raaz Digital · AI SEO &amp; growth for home service businesses.</small>
+  </div>
+</footer>
+
+<div class="sent-pop" id="sentPop" aria-hidden="true" role="dialog" aria-label="Message sent">
+  <div class="sent-card">
+    <div class="sent-check">✓</div>
+    <h3>Message sent!</h3>
+    <p>Abd Raaz will contact you soon.</p>
+    <button class="btn btn-primary" id="sentClose" type="button">Done</button>
+  </div>
+</div>
+<script>
+/* ============ SITE SETTINGS — fill these in ============ */
+const CONFIG = {
+  whatsapp: "8801786457461",
+  email: "abd@abdraazdigital.com",
+  facebook: "https://facebook.com/abdraazfb",
+  community: "https://www.facebook.com/groups/285792449030839",
+  // ⚠ PLACEHOLDER — Imamul's own Cal.com for demo only. Replace with the client's booking link before handoff.
+  calCom: "https://cal.com/imamul-hassan-1ixanq/imamul-discovery-call",
+  supabaseUrl: "",        // Supabase project URL (phase 2)
+  supabaseAnonKey: "",    // Supabase publishable key (phase 2)
+  gtmId: ""               // GTM container ID (phase 2)
+};
+/* ======================================================= */
+const isSet = v => v && !v.startsWith("PASTE_YOUR");
+const waLink = t => 'https://wa.me/' + CONFIG.whatsapp + (t ? '?text=' + encodeURIComponent(t) : '');
+
+// Google Tag Manager — loads only when gtmId is set (phase 2)
+(function(){
+  if (!isSet(CONFIG.gtmId)) return;
+  var w = window, d = document, l = 'dataLayer', i = CONFIG.gtmId;
+  w[l] = w[l] || [];
+  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+  var f = d.getElementsByTagName('script')[0],
+      j = d.createElement('script'), dl = '&l=' + l;
+  j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+  var ns = d.createElement('iframe');
+  ns.src = 'https://www.googletagmanager.com/ns.html?id=' + i;
+  ns.height = '0'; ns.width = '0'; ns.style.display = 'none'; ns.style.visibility = 'hidden';
+  d.body.insertBefore(ns, d.body.firstChild);
+})();
+
+// All links read from CONFIG — swap values here, whole site updates
+(function(){
+  const wa = waLink('Hi Abd Raaz! I found your website.');
+  [['svcSeo',wa],['svcCustom',wa],['svcBrand',wa],
+   ['ctWa',wa],['ftWa',wa]].forEach(([id, href]) => {
+    const el = document.getElementById(id);
+    if (el) el.href = href;
+  });
+// Booking calendar as a direct iframe (robust everywhere — no external JS needed)
+// PLACEHOLDER: Imamul's link in CONFIG.calCom — replace before handoff
+(function(){
+  var sec = document.getElementById('booking');
+  var frame = document.getElementById('bookFrame');
+  var fb = document.getElementById('bookFallback');
+  if (!isSet(CONFIG.calCom)) { if (sec) sec.style.display = 'none'; return; } // no link, no empty box
+  var fbb = document.getElementById('bookFallbackBtn');
+  if (fbb) fbb.href = CONFIG.calCom;
+  function showFallback(){ frame.style.display = 'none'; fb.style.display = 'block'; }
+  // Only embed the calendar if this browser can actually reach cal.com;
+  // otherwise show a clean button instead of a broken box.
+  try {
+    fetch(CONFIG.calCom, {mode: 'no-cors'}).then(function(){ frame.src = CONFIG.calCom; }, showFallback);
+  } catch(e){ showFallback(); }
+})();
+  document.querySelectorAll('.revWa').forEach(el => el.href = wa);
+  const fb = document.getElementById('ctFb'); if (fb) fb.href = CONFIG.facebook;
+  const fb2 = document.getElementById('ftFb'); if (fb2) fb2.href = CONFIG.facebook;
+  const em = document.getElementById('ctEmail'); if (em) em.href = 'mailto:' + CONFIG.email;
+  const cm = document.getElementById('ctCommunity'); if (cm) cm.href = CONFIG.community;
+})();
+
+// Scroll-reveal animations: content rises in with a staggered cascade
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) {
+    const el = e.target;
+    const sibs = [...el.parentElement.children].filter(c => c.classList && c.classList.contains('rv'));
+    el.style.transitionDelay = (sibs.indexOf(el) * 0.09) + 's';
+    el.classList.add('in');
+    io.unobserve(el);
+  }
+}), {threshold: .12});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// Active nav link
+const navAs = [...document.querySelectorAll('.nav-links a')];
+const secIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) {
+    navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }
+}), {rootMargin: '-40% 0px -55% 0px'});
+['services','about','reviews','contact'].forEach(id => { const s = document.getElementById(id); if (s) secIO.observe(s); });
+
+// Contact form -> Supabase (falls back to WhatsApp while CONFIG is empty)
+document.getElementById('contactForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const note = document.getElementById('formNote');
+  const btn = document.getElementById('sendBtn');
+  const fd = new FormData(e.target);
+  if (fd.get('company')) return; // honeypot
+  const payload = {
+    name: (fd.get('name') || '').trim(),
+    contact: (fd.get('contact') || '').trim(),
+    message: (fd.get('message') || '').trim()
+  };
+  if (!payload.name || !payload.contact || !payload.message) {
+    note.className = 'form-note err'; note.textContent = 'Please fill in your name, email and message.';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.contact)) {
+    note.className = 'form-note err'; note.textContent = 'Please enter a valid email address.';
+    return;
+  }
+  if (!isSet(CONFIG.supabaseUrl) || !isSet(CONFIG.supabaseAnonKey)) {
+    note.className = 'form-note err';
+    note.innerHTML = 'Form isn\'t connected yet — message us on <a data-cta="form-fallback-whatsapp" href="' + waLink('Hi Abd Raaz!') + '" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">WhatsApp</a> instead.';
+    return;
+  }
+  btn.disabled = true; btn.classList.add('is-pressed'); btn.textContent = 'Sending…';
+  try {
+    const r = await fetch(CONFIG.supabaseUrl.replace(/\/$/, '') + '/rest/v1/leads', {
+      method: 'POST',
+      headers: {
+        'apikey': CONFIG.supabaseAnonKey,
+        'Authorization': 'Bearer ' + CONFIG.supabaseAnonKey,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    note.className = 'form-note ok'; note.textContent = '✓ Message sent — we\'ll reply personally.';
+    e.target.reset();
+    (window.dataLayer = window.dataLayer || []).push({event: 'form_submit'});
+    btn.classList.remove('is-pressed'); btn.classList.add('is-success'); btn.textContent = '✓ Sent';
+    showSentPop();
+  } catch (err) {
+    note.className = 'form-note err'; note.textContent = 'Something went wrong sending. Please try WhatsApp instead.';
+    btn.classList.remove('is-pressed');
+  }
+  btn.disabled = false;
+  if (!btn.classList.contains('is-success')) btn.textContent = 'Send Message →';
+});
+
+// Success popup: "Abd Raaz will contact you soon."
+function showSentPop(){
+  const pop = document.getElementById('sentPop');
+  pop.classList.add('show'); pop.setAttribute('aria-hidden', 'false');
+}
+function hideSentPop(){
+  const pop = document.getElementById('sentPop');
+  pop.classList.remove('show'); pop.setAttribute('aria-hidden', 'true');
+  const btn = document.getElementById('sendBtn');
+  btn.classList.remove('is-success'); btn.textContent = 'Send Message →';
+}
+document.getElementById('sentClose').addEventListener('click', hideSentPop);
+document.getElementById('sentPop').addEventListener('click', e => { if (e.target.id === 'sentPop') hideSentPop(); });
+
+// Simple scroll-depth tracking (25/50/75/90)
+(function(){
+  const marks = [25, 50, 75, 90]; let done = {};
+  window.addEventListener('scroll', () => {
+    const p = Math.round((window.scrollY + innerHeight) / document.body.scrollHeight * 100);
+    marks.forEach(m => {
+      if (p >= m && !done[m]) {
+        done[m] = 1;
+        (window.dataLayer = window.dataLayer || []).push({event: 'scroll_depth', percent: m});
+      }
+    });
+  }, {passive: true});
+})();
+
+// Ticker: duplicate content for a seamless infinite loop
+(function(){
+  const t = document.getElementById('tickerTrack');
+  if (t) t.innerHTML += t.innerHTML;
+  const r = document.getElementById('revTrack');
+  if (r) r.innerHTML += r.innerHTML;
+})();
+
+// Reviews marquee: auto-loops, but the visitor can grab & drag through the messages
+(function(){
+  const track = document.getElementById('revTrack');
+  if (!track) return;
+  const marq = track.parentElement;
+  const canHover = matchMedia('(hover: hover)').matches;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  track.style.animation = 'none'; // JS drives the loop from here
+  let x = 0, auto = !reduceMotion, dragging = false, hoverHold = false;
+  let startX = 0, startPos = 0, moved = 0, suppressClick = false, resumeT = null;
+  const SPEED = 45, half = () => track.scrollWidth / 2;
+  const render = () => { track.style.transform = 'translateX(' + x + 'px)'; };
+  const wrap = () => { const h = half(); if (x > 0) x -= h; else if (-x >= h) x += h; };
+  let last = performance.now();
+  (function frame(now){
+    const dt = Math.min((now - last) / 1000, 0.05); last = now;
+    if (auto && !dragging && !hoverHold) { x -= SPEED * dt; wrap(); render(); }
+    requestAnimationFrame(frame);
+  })(last);
+  marq.addEventListener('pointerdown', e => {
+    dragging = true; moved = 0; startX = e.clientX; startPos = x;
+    marq.classList.add('grabbing');
+    try { marq.setPointerCapture(e.pointerId); } catch(_){}
+    clearTimeout(resumeT);
+  });
+  marq.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    moved = Math.max(moved, Math.abs(dx));
+    x = startPos + dx; wrap(); render();
+  });
+  function endDrag(){
+    if (!dragging) return;
+    dragging = false; marq.classList.remove('grabbing');
+    if (moved > 10) suppressClick = true;
+    clearTimeout(resumeT);
+    resumeT = setTimeout(() => { auto = !reduceMotion; }, 1200);
+  }
+  marq.addEventListener('pointerup', endDrag);
+  marq.addEventListener('pointercancel', endDrag);
+  marq.addEventListener('dragstart', e => e.preventDefault());
+  marq.addEventListener('click', e => {
+    if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
+  }, true);
+  if (canHover) {
+    marq.addEventListener('mouseenter', () => { hoverHold = true; });
+    marq.addEventListener('mouseleave', () => { hoverHold = false; });
+  }
+})();
+
+// Every card: click -> it pops, and its icon flutters away like a butterfly (replayable)
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const flyCards = [
+  ['.card', '.icon'],
+  ['.rcard', '.rava'],
+  ['.dcard', '.dico']
+];
+flyCards.forEach(([cardSel, iconSel]) => {
+  document.querySelectorAll(cardSel).forEach(el => {
+    el.addEventListener('click', () => {
+      el.classList.remove('popping');
+      void el.offsetWidth;
+      el.classList.add('popping');
+      if (!reduceMotion) {
+        const icon = el.querySelector(iconSel);
+        if (icon) {
+          const r = icon.getBoundingClientRect();
+          const ghost = icon.cloneNode(true);
+          ghost.classList.add('fly-clone');
+          ghost.style.left = r.left + 'px';
+          ghost.style.top = r.top + 'px';
+          ghost.style.width = r.width + 'px';
+          ghost.style.height = r.height + 'px';
+          document.body.appendChild(ghost);
+          setTimeout(() => ghost.remove(), 1300);
+        }
+      }
+    });
+    el.addEventListener('animationend', e => {
+      if (e.animationName === 'cardPop') el.classList.remove('popping');
+    });
+  });
+});
+
+// Tracking: each interaction pushes its own named event for GTM —
+// real event names (whatsapp_click, video_click, ...) keep triggers simple and reports readable.
+// Every event still carries cta_name so you know exactly which button fired.
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-cta]');
+  if (!t) return;
+  const name = t.getAttribute('data-cta');
+  let evt = 'cta_click'; // fallback: nav, socials, footer
+  if (name.indexOf('whatsapp') !== -1) evt = 'whatsapp_click';
+  else if (name === 'form-submit') evt = 'form_click';
+  else if (name.indexOf('book') !== -1) evt = 'booking_click';
+  else if (name.indexOf('proof-video') === 0) evt = 'video_click';
+  else if (name === 'proof-calculator' || name === 'proof-case') evt = 'work_click';
+  else if (name === 'nav-link-about') evt = 'about_click';
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event: evt, cta_name: name});
+});
+
+// Premium motion: 3D card tilt + magnetic buttons + nav shadow (fine pointers only)
+(function(){
+  if (!matchMedia('(pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.card, .rcard, .dcard').forEach(card => {
+    let raf = 0;
+    card.addEventListener('pointerenter', () => {
+      card.style.transition = 'transform .12s ease-out, box-shadow .3s, border-color .3s';
+    }, {once:true});
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5;
+      const py = (e.clientY - r.top) / r.height - .5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        card.style.transform = 'perspective(950px) rotateX(' + (-py*7).toFixed(2) + 'deg) rotateY(' + (px*9).toFixed(2) + 'deg) translateY(-6px)';
+      });
+    });
+    card.addEventListener('pointerleave', () => { cancelAnimationFrame(raf); card.style.transform = ''; });
+  });
+  document.querySelectorAll('.btn-primary:not(#sendBtn)').forEach(btn => {
+    btn.addEventListener('pointermove', e => {
+      const r = btn.getBoundingClientRect();
+      btn.style.transform = 'translate(' + ((e.clientX-r.left-r.width/2)*.12).toFixed(1) + 'px,' + ((e.clientY-r.top-r.height/2)*.18).toFixed(1) + 'px)';
+    });
+    btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
+  });
+  const nav = document.querySelector('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 12), {passive:true});
+})();
+
+// Mobile hamburger menu
+(function(){
+  const btn = document.getElementById('menuBtn'), menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  menu.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      menu.classList.remove('open'); btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Open menu');
+    }
+  });
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
